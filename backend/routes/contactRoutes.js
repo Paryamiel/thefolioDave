@@ -1,0 +1,8 @@
+// backend/routes/contactRoutes.js
+const express = require('express');
+const router = express.Router();
+const { submitContact } = require('../controllers/contactController');
+
+router.post('/', submitContact); // Public route
+
+module.exports = router;
