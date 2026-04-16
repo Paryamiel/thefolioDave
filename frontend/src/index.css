@@ -1,0 +1,229 @@
+/* ===============================
+   GLOBAL RESET & BASE STYLES
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-light: #f4f6f9;
+    --text-light: #1e293b;
+    --primary-color: #3b82f6; /* Blue for classic theme */
+    --accent-color: #fbbf24; /* Gold/Mythic */
+    --card-bg-light: #ffffff;
+    --nav-bg-light: #ffffff;
+    
+    --bg-dark: #0f172a;
+    --text-dark: #f8fafc;
+    --card-bg-dark: #1e293b;
+    --nav-bg-dark: #0b1120;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+main {
+    flex: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ===============================
+   HEADER & NAVIGATION
+================================ */
+header {
+    background: var(--nav-bg-light);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--accent-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.dark header {
+    background: var(--nav-bg-dark);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+header h2 {
+    color: var(--primary-color);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+body.dark nav a {
+    color: var(--text-dark);
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent-color);
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s;
+    
+    /* ADD THESE 4 LINES TO CENTER THE EMOJI */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; 
+}
+
+/* ===============================
+   CARDS & FORMS
+================================ */
+.card, .form-container, .quiz-section {
+    background: var(--card-bg-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+body.dark .card, body.dark .form-container, body.dark .quiz-section {
+    background: var(--card-bg-dark);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Form Styles */
+.form-group { margin-bottom: 15px; text-align: left; }
+label { display: block; margin-bottom: 5px; font-weight: bold; }
+input, select, textarea {
+    width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px;
+    background: #fff; color: #333;
+}
+body.dark input, body.dark select, body.dark textarea {
+    background: #334155; border: 1px solid #475569; color: #fff;
+}
+button {
+    background: var(--primary-color); color: #fff; border: none; padding: 10px 20px;
+    border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.3s;
+}
+button:hover { background: var(--accent-color); color: #000; }
+.error-msg { color: #ef4444; font-size: 12px; display: block; margin-top: 5px; }
+
+/* Image styling */
+img.hero-img {
+    width: 100%; max-width: 400px; border-radius: 12px;
+    animation: float 4s ease-in-out infinite;
+    border: 3px solid var(--accent-color);
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.flex-center { display: flex; justify-content: center; align-items: center; }
+.mt-2 { margin-top: 20px; }
+
+footer {
+    text-align: center; padding: 20px; background: var(--nav-bg-light);
+    border-top: 1px solid #ccc;
+}
+body.dark footer { background: var(--nav-bg-dark); border-top: 1px solid #444; }
+/* ===============================
+   PAGE-SPECIFIC IMAGE GRIDS 
+================================ */
+
+/* Missing styles from home.html */
+.image-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.grid-item {
+    flex: 1;
+    min-width: 250px;
+}
+.grid-item img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+.grid-item img:hover {
+    transform: scale(1.03);
+}
+
+/* Missing styles from about.html */
+.gallery {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.gallery img {
+    width: 45%;
+    min-width: 200px;
+    border-radius: 10px;
+    object-fit: cover; /* This forces the image to keep its aspect ratio */
+    border: 1px solid #ccc;
+}
+body.dark .gallery img {
+    border-color: #444;
+}
