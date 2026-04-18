@@ -29,7 +29,7 @@ export default function ProfilePage() {
           };
 
           // Send the new IGN to the backend
-          const { data } = await axios.put('http://localhost:5000/api/users/profile', { ign }, config);
+          const { data } = await axios.put('/api/users/profile', { ign }, config);
           
           // Update the local storage with the new IGN so the whole app knows!
           localStorage.setItem('userInfo', JSON.stringify(data));

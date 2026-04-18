@@ -39,7 +39,7 @@ export default function ContactPage() {
     if (isValid) {
       try {
         // Send a POST request to our new route
-        await axios.post('http://localhost:5000/api/invites', formData);
+        await axios.post('/api/invites', formData);
         
         // If successful, show the modal and clear the form
         setShowModal(true); 

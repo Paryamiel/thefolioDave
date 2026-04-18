@@ -32,7 +32,7 @@ export default function LoginPage() {
         const config = { headers: { 'Content-Type': 'application/json' } };
         
         // Send login request to our Express backend
-        const response = await axios.post('http://localhost:5000/api/users/login', formData, config);
+        const response = await axios.post('/api/users/login', formData, config);
         
         // Save the user data and token to LocalStorage
         localStorage.setItem('userInfo', JSON.stringify(response.data));

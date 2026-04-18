@@ -28,9 +28,9 @@ export default function AdminDashboard() {
 
                 // Fetch everything at once
                 const [usersRes, invitesRes, postsRes] = await Promise.all([
-                    axios.get('http://localhost:5000/api/admin/users', config),
-                    axios.get('http://localhost:5000/api/admin/invites', config),
-                    axios.get('http://localhost:5000/api/posts') // Public route, but we need it to moderate
+                    axios.get('/api/admin/users', config),
+                    axios.get('/api/admin/invites', config),
+                    axios.get('/api/posts') // Public route, but we need it to moderate
                 ]);
 
                 setUsers(usersRes.data);
@@ -51,7 +51,7 @@ export default function AdminDashboard() {
         if (!window.confirm("Are you sure you want to delete this post?")) return;
         try {
             const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-            await axios.delete(`http://localhost:5000/api/admin/posts/${postId}`, config);
+            await axios.delete(`/api/admin/posts/${postId}`, config);
             setPosts(posts.filter(post => post._id !== postId));
         } catch (error) {
             alert("Failed to delete post");
@@ -62,7 +62,7 @@ export default function AdminDashboard() {
         if (!window.confirm("Delete this comment?")) return;
         try {
             const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-            const { data } = await axios.delete(`http://localhost:5000/api/admin/comments/${postId}/${commentId}`, config);
+            const { data } = await axios.delete(`/api/admin/comments/${postId}/${commentId}`, config);
             
             // Update the specific post with its new comment list from the backend
             setPosts(posts.map(post => post._id === postId ? data : post));

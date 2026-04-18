@@ -52,7 +52,7 @@ export default function RegisterPage() {
         };
 
         // Send to MongoDB!
-        const response = await axios.post('http://localhost:5000/api/users/register', body, config);
+        const response = await axios.post('/api/users/register', body, config);
         
         // Save login session
         localStorage.setItem('userInfo', JSON.stringify(response.data));

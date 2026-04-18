@@ -32,7 +32,7 @@ export default function MatchCard({ match }) {
 
       // Send the comment text and the user's IGN
       const { data } = await axios.post(
-        `http://localhost:5000/api/posts/${match._id}/comments`, 
+        `/api/posts/${match._id}/comments`, 
         { text: newComment, ign: userInfo.ign }, 
         config
       );

@@ -22,7 +22,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/posts');
+        const { data } = await axios.get('/api/posts');
         setMatches(data);
       } catch (error) {
         console.error("Failed to fetch posts", error);
@@ -47,7 +47,7 @@ export default function HomePage() {
         },
       };
 
-      const { data } = await axios.post('http://localhost:5000/api/posts', formData, config);
+      const { data } = await axios.post('/api/posts', formData, config);
       
       setMatches([data, ...matches]);
       
